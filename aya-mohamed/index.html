@@ -98,7 +98,10 @@
   .date-line b{color:var(--gold2);font-weight:600}
   .scroll-hint{margin-top:36px;color:var(--ink-soft);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;animation:pulseTxt 2.4s infinite}
 
-  /* countdown */
+  /* inline photos */
+document.querySelectorAll('img[data-photo]').forEach(im=>{ im.src = window['PHOTO'+im.dataset.photo] || ''; });
+
+/* countdown */
   .countdown{padding:26px 0 44px;text-align:center}
   .cd-title{font-family:'Great Vibes',cursive;font-size:2.1rem;color:var(--gold2);margin-bottom:20px}
   .cd-grid{display:flex;justify-content:center;gap:12px}
@@ -225,9 +228,9 @@
       <h2 class="sec-title">Once upon a time</h2>
       <p class="sec-sub">Every love story is beautiful, but ours is my favorite</p>
       <div class="photos">
-        <figure class="polaroid"><span class="tape"></span><img src="photo1.jpg" alt="Aya and Mohamed as kids"><figcaption>Where it all began</figcaption></figure>
-        <figure class="polaroid"><span class="tape"></span><img src="photo2.jpg" alt="Aya and Mohamed as kids"><figcaption>Two hearts, one soul</figcaption></figure>
-        <figure class="polaroid"><span class="tape"></span><img src="photo3.jpg" alt="Mohamed proposing to Aya as kids"><figcaption>She said yes</figcaption></figure>
+        <figure class="polaroid"><span class="tape"></span><img data-photo="1" alt="Aya and Mohamed as kids"><figcaption>Where it all began</figcaption></figure>
+        <figure class="polaroid"><span class="tape"></span><img data-photo="2" alt="Aya and Mohamed as kids"><figcaption>Two hearts, one soul</figcaption></figure>
+        <figure class="polaroid"><span class="tape"></span><img data-photo="3" alt="Mohamed proposing to Aya as kids"><figcaption>She said yes</figcaption></figure>
       </div>
     </div>
   </section>
@@ -251,6 +254,9 @@
 </main>
 
 <button id="musicBtn" aria-label="Music">🎵</button>
+<script src="photo1.js"></script>
+<script src="photo2.js"></script>
+<script src="photo3.js"></script>
 <audio id="bgm" loop></audio>
 
 <script>
@@ -302,6 +308,9 @@ mBtn.addEventListener('click', ()=>{
   if(bgm.paused){ bgm.play(); mBtn.classList.add('on'); }
   else{ bgm.pause(); mBtn.classList.remove('on'); }
 });
+
+/* inline photos */
+document.querySelectorAll('img[data-photo]').forEach(im=>{ im.src = window['PHOTO'+im.dataset.photo] || ''; });
 
 /* countdown */
 function tick(){
