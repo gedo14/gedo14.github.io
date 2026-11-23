@@ -6,7 +6,7 @@
 <title>Aya &amp; Mohamed — Katb El Ketab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f8f4ec; --gold:#b08d57; --gold2:#8f6f3e;
@@ -22,11 +22,15 @@
 
   /* ====== Envelope intro ====== */
   #intro{
-    position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center;
+    position:fixed; inset:0; z-index:100; display:flex; flex-direction:column; gap:26px; align-items:center; justify-content:center;
     background:linear-gradient(160deg,#efe6d4 0%,#e6d9c1 50%,#dccbb0 100%);
     transition:opacity 1.1s ease, visibility 1.1s;
   }
   #intro.open{opacity:0;visibility:hidden;pointer-events:none}
+  .intro-dua{
+    font-family:'Aref Ruqaa',serif;direction:rtl;font-size:1.35rem;color:var(--gold2);
+    text-align:center;padding:0 20px;text-shadow:0 1px 0 rgba(255,255,255,.65);
+  }
   .envelope{
     position:relative; width:min(320px,84vw); aspect-ratio:0.72;
     filter:drop-shadow(0 24px 44px rgba(93,72,44,.28));
@@ -142,8 +146,20 @@
   .d-ico{width:30px;display:flex;justify-content:center}
 
   .gift{text-align:center;padding:6px 20px 44px}
-  .gift p{font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--gold2);line-height:1.5}
+  .gift .g-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.45rem;color:var(--ink-soft);line-height:1.55;margin:0}
+  .gift .g-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:2.35rem;color:var(--ink);letter-spacing:.5px}
   .gift .g-heart{color:#c06a6a}
+  .gift .g-aya{font-family:'Aref Ruqaa',serif;direction:rtl;font-size:1.7rem;color:var(--gold2);margin:24px 0 0;line-height:2}
+
+  /* dua section */
+  .dua{text-align:center;padding:44px 24px 10px}
+  .dua .dua-card{
+    max-width:560px;margin:0 auto;background:var(--white);border:1px solid rgba(143,111,62,.22);
+    border-radius:18px;padding:34px 26px;box-shadow:0 14px 34px rgba(93,72,44,.10);
+  }
+  .dua p{font-family:'Amiri',serif;direction:rtl;font-size:1.35rem;line-height:2.05;color:var(--ink);margin:0 0 14px}
+  .dua p:last-child{margin-bottom:0}
+  .dua .dua-hl{font-family:'Aref Ruqaa',serif;font-size:1.8rem;color:var(--gold2);line-height:2}
   footer{
     text-align:center;color:var(--ink-soft);font-size:.78rem;padding-bottom:36px;
     letter-spacing:2px;text-transform:uppercase;
@@ -175,6 +191,7 @@
 <!-- ======== Intro envelope ======== -->
 <div id="intro">
   <div class="intro-names">Aya &amp; Mohamed</div>
+  <div class="intro-dua">قول ماشاء الله ربنا يحفظكم قبل ما تفتح ❤️</div>
   <div class="envelope" id="envelope" role="button" aria-label="Open the invitation">
     <div class="env-body"></div>
     <div class="env-flap"></div>
@@ -183,7 +200,7 @@
   <div class="intro-caption">Tap the seal to open</div>
 </div>
 
-<canvas id="petals"></canvas>
+<div id="petals"></div>
 
 <!-- ======== Page ======== -->
 <main id="page">
@@ -232,6 +249,18 @@
     </div>
   </section>
 
+  <section class="dua reveal">
+    <div class="wrap">
+      <div class="dua-card">
+        <p>الحمدلله الذي جعل المودة والرحمة آيةً للعالمين')♥️</p>
+        <p>وأذكر فيكَ قول رسول الله</p>
+        <p class="dua-hl">هذا مني وانا منه<br>هذا مني وانا منه..</p>
+        <p>الحمدلله الذي رزقني أُنسكَ بعد وحشة..<br>ورزقني حبكَ وقُربكَ ومودتك:)♥️</p>
+        <p>الله يُيّسر طريقنا ويجعل لنا فيه حياةً مباركة طيبة هينة لينة ..</p>
+      </div>
+    </div>
+  </section>
+
   <section class="details reveal">
     <div class="wrap">
       <h2 class="sec-title" style="text-align:center;margin-bottom:22px">The Details</h2>
@@ -244,7 +273,8 @@
   </section>
 
   <section class="gift reveal">
-    <p>a gift from the bride's brother,<br>Ahmed El Gamal <span class="g-heart">♥</span></p>
+    <p class="g-line">a gift from the bride's brother,<br><span class="g-name">Ahmed El Gamal <span class="g-heart">♥</span></span></p>
+    <p class="g-aya">واخيرا محمد وجد آيته ❤️</p>
   </section>
 
   <footer>Your presence is our greatest gift</footer>
@@ -254,11 +284,12 @@
 <script src="photo1.js"></script>
 <script src="photo2.js"></script>
 <script src="photo3.js"></script>
-<audio id="bgm" loop></audio>
+<div id="ytwrap" style="position:fixed;bottom:0;left:0;width:2px;height:2px;overflow:hidden;opacity:.01;pointer-events:none" aria-hidden="true"><div id="ytplayer"></div></div>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 /* ================= CONFIG ================= */
-const MUSIC_URL = "";            // drop the song file here later (e.g. "song.mp3")
+const YT_ID = "yVzgV_q7oKo";    // We Akhyran - Esseily & Sabren
 const EVENT_TS  = new Date("2026-11-26T19:00:00+02:00").getTime();
 /* ========================================== */
 
@@ -266,7 +297,6 @@ const body   = document.body;
 const intro  = document.getElementById('intro');
 const env    = document.getElementById('envelope');
 const page   = document.getElementById('page');
-const bgm    = document.getElementById('bgm');
 const mBtn   = document.getElementById('musicBtn');
 
 let petalsStarted = false;
@@ -294,16 +324,28 @@ if (location.hash === '#open' || location.hash.includes('flat')){
   observeReveals();
 }
 
-/* music */
+/* music (YouTube player; starts on the seal tap) */
+let ytPlayer = null, ytReady = false;
+window.onYouTubeIframeAPIReady = function(){
+  ytPlayer = new YT.Player('ytplayer', {
+    videoId: YT_ID,
+    playerVars: { loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
+    events: { onReady: function(){ ytReady = true; } }
+  });
+};
 function startMusic(){
-  if(!MUSIC_URL){ mBtn.style.display='none'; return; }
-  bgm.src = MUSIC_URL;
-  bgm.play().then(()=>{ mBtn.classList.add('on'); }).catch(()=>{});
-  mBtn.style.display='flex';
+  mBtn.style.display = 'flex';
+  let tries = 0;
+  const iv = setInterval(()=>{
+    if(ytReady && ytPlayer && ytPlayer.playVideo){
+      ytPlayer.playVideo(); mBtn.classList.add('on'); clearInterval(iv);
+    } else if(++tries > 30){ clearInterval(iv); }
+  }, 300);
 }
 mBtn.addEventListener('click', ()=>{
-  if(bgm.paused){ bgm.play(); mBtn.classList.add('on'); }
-  else{ bgm.pause(); mBtn.classList.remove('on'); }
+  if(!ytPlayer || !ytPlayer.getPlayerState) return;
+  if(ytPlayer.getPlayerState() === 1){ ytPlayer.pauseVideo(); mBtn.classList.remove('on'); }
+  else{ ytPlayer.playVideo(); mBtn.classList.add('on'); }
 });
 
 /* inline photos */
