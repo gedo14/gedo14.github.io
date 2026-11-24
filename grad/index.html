@@ -70,6 +70,10 @@ footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 .scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.music-btn{position:fixed;bottom:18px;left:18px;z-index:80;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--gold),#a8842a);color:#1d1608;border:none;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.music-btn:hover{transform:scale(1.08)}
+.music-btn.playing{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.35)}50%{box-shadow:0 8px 26px rgba(212,175,55,.8)}}
 </style>
 </head>
 <body>
@@ -104,7 +108,7 @@ footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em
       <div class="who">— عيلتك</div>
     </div>
     <div class="msg">
-      <p>من المحاضرة الأولى لآخر سكشن.. صاحبي اتخرج! شرفتنا يا دكتور، ولسه الجاي أحلى.</p>
+      <p>من المحاضرة الأولى لآخر سكشن.. صاحبي اتخرج! شرفتنا يا دكتور. رسمياً: مفيش امتحانات تاني.. (لحد الماجستير يعني 😅)</p>
       <div class="who">— صحابك</div>
     </div>
     <div class="msg">
@@ -126,7 +130,19 @@ footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em
   <footer>Made with pride · Mawke3ak</footer>
 </div>
 
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الأغنية">&#9834;</button>
+<div id="ytplayer" style="position:fixed;width:1px;height:1px;overflow:hidden;left:-9999px;bottom:0"></div>
+
 <script>
+const YT_ID='3GwjfUFyY6M';
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+let ytPlayer=null,ytReady=false,ytPlaying=false;
+window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player('ytplayer',{videoId:YT_ID,playerVars:{loop:1,playlist:YT_ID},events:{onReady:()=>{ytReady=true}}});};
+document.getElementById('musicBtn').addEventListener('click',function(){
+  if(!ytReady)return;
+  if(ytPlaying){ytPlayer.pauseVideo();}else{ytPlayer.playVideo();}
+  ytPlaying=!ytPlaying;this.classList.toggle('playing',ytPlaying);
+});
 const intro=document.getElementById('intro'), page=document.getElementById('page'),
       cap=document.getElementById('cap'), celeBtn=document.getElementById('celeBtn');
 const COLORS=['#d4af37','#ecd68a','#12284b','#ffffff','#7fa3d9'];
