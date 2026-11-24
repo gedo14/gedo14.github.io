@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>عيد جواز يوسف و حبيبة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terra:#b85c48; --terra2:#94402f; --gold:#c9a24b; --gold-soft:#e6cf9a;
+  --cream:#faf3ec; --white:#fffdf9; --ink:#3a322c; --muted:#8a7f74;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;
+  background:
+    radial-gradient(1100px 760px at 85% -8%, #f6e4d9 0%, transparent 55%),
+    radial-gradient(900px 640px at 8% 108%, #f3ddcf 0%, transparent 55%),
+    var(--cream);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+.eng{font-family:'Playfair Display',serif}
+
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px;text-align:center;background:radial-gradient(1100px 760px at 85% -8%,#f6e4d9 0%,transparent 55%),radial-gradient(900px 640px at 8% 108%,#f3ddcf 0%,transparent 55%),var(--cream);transition:opacity 1s ease,visibility 1s}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,9vw,3.4rem);color:var(--terra2)}
+.intro-sub{color:var(--muted);font-size:clamp(1.05rem,4.2vw,1.25rem);font-weight:500;line-height:1.9}
+.hearts{position:relative;width:130px;height:110px;cursor:pointer;animation:floaty 3.4s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.heart{position:absolute;width:60px;height:54px;top:22px;transition:transform .8s ease}
+.heart::before,.heart::after{content:'';position:absolute;top:0;width:30px;height:48px;border-radius:30px 30px 0 0;background:linear-gradient(160deg,#d4775f,var(--terra))}
+.heart::before{left:30px;transform:rotate(45deg);transform-origin:0 100%}
+.heart::after{left:0;transform:rotate(-45deg);transform-origin:100% 100%}
+.heart.h1{left:6px}
+.heart.h2{right:6px;top:32px;transform:scale(.85)}
+.hearts.open .h1{transform:translateX(-16px) rotate(-10deg)}
+.hearts.open .h2{transform:translateX(16px) rotate(10deg) scale(.85)}
+.intro-caption{color:var(--terra2);letter-spacing:.35em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase;opacity:.85}
+
+#page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+#page.show{opacity:1;visibility:visible}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 30px;gap:10px}
+.hero .eyebrow{color:var(--terra);letter-spacing:.4em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase}
+.hero h1{font-size:clamp(2rem,8.6vw,3rem);font-weight:800;color:var(--terra2);line-height:1.6}
+.hero .names{font-family:'Great Vibes',cursive;font-size:clamp(2.8rem,11vw,4.2rem);color:var(--terra);font-weight:400;line-height:1.15}
+.hero .ar{font-size:clamp(1.1rem,4.6vw,1.35rem);font-weight:500;color:#5a5049;line-height:2}
+.hero .en{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.05rem}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:10px auto}
+.scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.count-sec{max-width:560px;margin:0 auto 44px;padding:0 18px;text-align:center}
+.count-sec h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--terra2);margin-bottom:14px}
+.count{display:flex;gap:10px;justify-content:center}
+.count .cell{flex:1;background:var(--white);border:1px solid rgba(201,162,75,.35);border-radius:14px;padding:14px 6px;box-shadow:0 10px 24px rgba(148,64,47,.08)}
+.count b{display:block;font-family:'Playfair Display',serif;font-size:clamp(1.6rem,7vw,2.1rem);color:var(--terra2)}
+.count span{font-size:.85rem;color:var(--muted);font-weight:500}
+
+.stats{max-width:560px;margin:0 auto 40px;display:flex;gap:12px;padding:0 18px;flex-wrap:wrap;justify-content:center}
+.stat{flex:1 1 140px;background:var(--white);border:1px solid rgba(184,92,72,.22);border-radius:16px;padding:18px 12px;text-align:center;box-shadow:0 10px 24px rgba(148,64,47,.08)}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--terra)}
+.stat span{font-size:.92rem;color:var(--muted);font-weight:500}
+
+.tl{max-width:600px;margin:0 auto 46px;padding:0 20px}
+.tl h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--terra2);text-align:center;margin-bottom:18px}
+.tl-item{display:flex;gap:14px;align-items:flex-start;background:var(--white);border:1px solid rgba(201,162,75,.3);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 10px 24px rgba(148,64,47,.07)}
+.tl-item img{width:86px;height:86px;object-fit:cover;border-radius:12px;flex-shrink:0}
+.tl-item .when{font-family:'Playfair Display',serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:4px}
+.tl-item p{font-size:1rem;line-height:1.9;color:#4a463f;font-weight:500}
+
+.gallery{max-width:640px;margin:0 auto 46px;padding:0 16px;text-align:center}
+.gallery h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--terra2);margin-bottom:2px}
+.gallery .g-sub{font-family:'Playfair Display',serif;letter-spacing:.3em;font-size:.68rem;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.g-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 20px}
+.g-scroll::-webkit-scrollbar{display:none}
+.g-item{flex:0 0 70%;max-width:270px;scroll-snap-align:center;background:#fff;padding:9px 9px 12px;border-radius:8px;box-shadow:0 12px 26px rgba(148,64,47,.14);transform:rotate(-1.2deg);margin:0}
+.g-item:nth-child(even){transform:rotate(1.4deg)}
+.g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+.g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#5c564c;font-weight:500}
+
+.music-btn{position:fixed;bottom:18px;left:18px;z-index:80;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--terra),var(--terra2));color:#fff;border:none;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 20px rgba(148,64,47,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.music-btn:hover{transform:scale(1.08)}
+.music-btn.playing{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(148,64,47,.35)}50%{box-shadow:0 8px 26px rgba(184,92,72,.7)}}
+
+footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;padding:0 20px 34px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.flat .reveal{opacity:1;transform:none}
+.flat .hero{min-height:auto;padding-top:60px}
+.flat #intro{display:none}
+.flat #page{opacity:1;visibility:visible}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="intro-title">Youssef &amp; Habiba</div>
+  <p class="intro-sub">3 سنين عدّوا..<br>افتح البطاقة</p>
+  <div class="hearts" id="hearts" role="button" aria-label="Open the card">
+    <div class="heart h1"></div>
+    <div class="heart h2"></div>
+  </div>
+  <div class="intro-caption">Tap the hearts to open</div>
+</div>
+
+<div id="page">
+  <section class="hero">
+    <div class="eyebrow">Happy Anniversary</div>
+    <h1>3 سنين حب</h1>
+    <div class="names">يوسف &amp; حبيبة</div>
+    <div class="ar">3 سنين جواز.. ولسه كل يوم بيبقى أحلى من اللي قبله.<br>وأجمل حاجة في السنين دي؟ إنها معاكي.</div>
+    <div class="en eng">Three years down, forever to go</div>
+    <div class="divider"></div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="count-sec reveal">
+    <h2>فاضل على عيدنا</h2>
+    <div class="count">
+      <div class="cell"><b id="cdD">--</b><span>يوم</span></div>
+      <div class="cell"><b id="cdH">--</b><span>ساعة</span></div>
+      <div class="cell"><b id="cdM">--</b><span>دقيقة</span></div>
+      <div class="cell"><b id="cdS">--</b><span>ثانية</span></div>
+    </div>
+  </section>
+
+  <section class="stats reveal">
+    <div class="stat"><b>1,095</b><span>يوم حب</span></div>
+    <div class="stat"><b>156</b><span>جمعة مباركة سوا</span></div>
+    <div class="stat"><b>&#8734;</b><span>مرة قال فيها "هنطلب أكل إيه؟"</span></div>
+  </section>
+
+  <section class="tl reveal">
+    <h2>محطاتنا</h2>
+    <div class="tl-item">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=75&auto=format&fit=crop" alt="Coffee cups" loading="lazy">
+      <div><div class="when">2023</div><p>أول قهوة سوا.. عرفنا من يومها إن في حاجة مختلفة.</p></div>
+    </div>
+    <div class="tl-item">
+      <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=75&auto=format&fit=crop" alt="Hands forming a heart with roses" loading="lazy">
+      <div><div class="when">2024</div><p>اتجوزنا.. ومن يومها والبيت بقى له طعم تاني.</p></div>
+    </div>
+    <div class="tl-item">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=75&auto=format&fit=crop" alt="Romantic dinner table" loading="lazy">
+      <div><div class="when">2026</div><p>لسه بنحتفل ببعض كل يوم.. وعقبال ٣٠ سنة.</p></div>
+    </div>
+  </section>
+
+  <section class="gallery reveal">
+    <h2>لحظاتنا</h2>
+    <div class="g-sub">Our Moments</div>
+    <div class="g-scroll">
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=800&q=80&auto=format&fit=crop" alt="Red roses" loading="lazy"><figcaption>ورد عيدنا</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=80&auto=format&fit=crop" alt="A pink rose" loading="lazy"><figcaption>وحدة لكل سنة</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80&auto=format&fit=crop" alt="Coffee on a wooden table" loading="lazy"><figcaption>قعدتنا المفضلة</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop" alt="Two chairs on a lawn" loading="lazy"><figcaption>كرسيين للعمر كله</figcaption></figure>
+    </div>
+  </section>
+
+  <footer>Made with love · Mawke3ak</footer>
+</div>
+
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الأغنية">&#9834;</button>
+<div id="ytplayer" style="position:fixed;width:1px;height:1px;overflow:hidden;left:-9999px;bottom:0"></div>
+
+<script>
+const YT_ID='rtOvBOTyX00';
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+let ytPlayer=null,ytReady=false,ytPlaying=false;
+window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player('ytplayer',{videoId:YT_ID,playerVars:{loop:1,playlist:YT_ID},events:{onReady:()=>{ytReady=true}}});};
+document.getElementById('musicBtn').addEventListener('click',function(){
+  if(!ytReady)return;
+  if(ytPlaying){ytPlayer.pauseVideo();}else{ytPlayer.playVideo();}
+  ytPlaying=!ytPlaying;this.classList.toggle('playing',ytPlaying);
+});
+
+const body=document.body, intro=document.getElementById('intro'),
+      page=document.getElementById('page'), hearts=document.getElementById('hearts');
+let opened=false;
+function observeReveals(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+hearts.addEventListener('click',()=>{
+  if(opened)return; opened=true;
+  hearts.classList.add('open');
+  setTimeout(()=>{intro.classList.add('open');body.classList.remove('locked');page.classList.add('show');observeReveals();},700);
+});
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';body.classList.remove('locked');page.classList.add('show');observeReveals();
+}
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+
+const target=new Date('2027-02-14T00:00:00+02:00').getTime();
+function tick(){
+  let d=target-Date.now(); if(d<0)d=0;
+  document.getElementById('cdD').textContent=Math.floor(d/864e5);
+  document.getElementById('cdH').textContent=Math.floor(d%864e5/36e5);
+  document.getElementById('cdM').textContent=Math.floor(d%36e5/6e4);
+  document.getElementById('cdS').textContent=Math.floor(d%6e4/1e3);
+}
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
