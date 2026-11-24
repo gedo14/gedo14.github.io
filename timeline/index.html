@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>حكاية آدم و فرح</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#5a5f9e; --indigo2:#41457a; --blush:#e2a9b8; --gold:#c9a24b;
+  --cream:#f4f2f7; --white:#fdfcff; --ink:#34333e; --muted:#8d8a9d;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;
+  background:
+    radial-gradient(1100px 760px at 85% -8%, #e6e4f2 0%, transparent 55%),
+    radial-gradient(900px 640px at 8% 108%, #e2e0ee 0%, transparent 55%),
+    var(--cream);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+.eng{font-family:'Playfair Display',serif}
+
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px;text-align:center;background:radial-gradient(1100px 760px at 85% -8%,#e6e4f2 0%,transparent 55%),radial-gradient(900px 640px at 8% 108%,#e2e0ee 0%,transparent 55%),var(--cream);transition:opacity 1s ease,visibility 1s}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,9vw,3.4rem);color:var(--indigo2)}
+.intro-sub{color:var(--muted);font-size:clamp(1.05rem,4.2vw,1.25rem);font-weight:500;line-height:1.9}
+.pin{position:relative;width:90px;height:120px;cursor:pointer;animation:floaty 3.2s ease-in-out infinite;filter:drop-shadow(0 16px 28px rgba(65,69,122,.3))}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.pin .head{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:70px;background:linear-gradient(160deg,var(--indigo),var(--indigo2));border-radius:50% 50% 50% 0;transform-origin:bottom left;rotate:0deg;transform:translateX(-50%) rotate(-45deg)}
+.pin .head::after{content:'';position:absolute;inset:18px;background:var(--blush);border-radius:50%}
+.pin .shadow{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:44px;height:10px;background:rgba(65,69,122,.25);border-radius:50%}
+.pin.hop{animation:hop .8s ease}
+@keyframes hop{30%{transform:translateY(-40px) scale(1.05)}60%{transform:translateY(0)}80%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+.intro-caption{color:var(--indigo2);letter-spacing:.35em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase;opacity:.85}
+
+#page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+#page.show{opacity:1;visibility:visible}
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 30px;gap:10px}
+.hero .eyebrow{color:var(--indigo);letter-spacing:.4em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase}
+.hero .names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,12vw,4.4rem);color:var(--indigo2);font-weight:400;line-height:1.15}
+.hero .ar{font-size:clamp(1.12rem,4.7vw,1.4rem);font-weight:500;color:#54516a;line-height:2}
+.hero .en{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.05rem}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:10px auto}
+.scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.tl{max-width:620px;margin:0 auto 46px;padding:10px 20px;position:relative}
+.tl::before{content:'';position:absolute;top:0;bottom:0;right:34px;width:3px;background:linear-gradient(180deg,var(--blush),var(--indigo));border-radius:2px}
+.tl h2{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--indigo2);text-align:center;margin-bottom:26px}
+.tl-item{position:relative;padding:0 74px 26px 0}
+.tl-item .dot{position:absolute;right:26px;top:26px;width:19px;height:19px;background:var(--white);border:4px solid var(--indigo);border-radius:50%;z-index:2}
+.tl-item .card{background:var(--white);border:1px solid rgba(90,95,158,.22);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(65,69,122,.1)}
+.tl-item img{width:100%;height:190px;object-fit:cover;display:block}
+.tl-item .txt{padding:16px 18px}
+.tl-item .when{font-family:'Playfair Display',serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blush);font-weight:700;margin-bottom:4px}
+.tl-item h3{font-size:1.15rem;font-weight:800;color:var(--indigo2);margin-bottom:4px}
+.tl-item p{font-size:1rem;line-height:1.9;color:#4a463f;font-weight:500}
+.tl-item.now .dot{border-color:var(--blush);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+
+footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;padding:0 20px 34px}
+.music-btn{position:fixed;bottom:18px;left:18px;z-index:80;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--indigo),var(--indigo2));color:#fff;border:none;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 20px rgba(65,69,122,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.music-btn:hover{transform:scale(1.08)}
+.music-btn.playing{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(65,69,122,.35)}50%{box-shadow:0 8px 26px rgba(90,95,158,.7)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.flat .reveal{opacity:1;transform:none}
+.flat .hero{min-height:auto;padding-top:60px}
+.flat #intro{display:none}
+.flat #page{opacity:1;visibility:visible}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="intro-title">Adam &amp; Farah</div>
+  <p class="intro-sub">حكاية بتتحكي من الأول..<br>افتح الخريطة</p>
+  <div class="pin" id="pin" role="button" aria-label="Open the story">
+    <div class="head"></div>
+    <div class="shadow"></div>
+  </div>
+  <div class="intro-caption">Tap the pin to open</div>
+</div>
+
+<div id="page">
+  <section class="hero">
+    <div class="eyebrow">Our Story</div>
+    <div class="names">آدم &amp; فرح</div>
+    <div class="ar">من أول "أهلاً".. للعمر كله.<br>دي حكايتنا محطة محطة</div>
+    <div class="en eng">Every love story is beautiful, ours is my favorite</div>
+    <div class="divider"></div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="tl reveal">
+    <h2>محطاتنا</h2>
+    <div class="tl-item">
+      <div class="dot"></div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&q=80&auto=format&fit=crop" alt="Coffee shop" loading="lazy">
+        <div class="txt"><div class="when">2021</div><h3>أول مرة قابلنا</h3><p>قهوة كانت المفروض ساعة.. قعدت ست ساعات. من يومها وعرفنا.</p></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="dot"></div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop" alt="Toasting coffee cups" loading="lazy">
+        <div class="txt"><div class="when">2022</div><h3>أول سنة سوا</h3><p>سنة كاملة من الضحك والمغامرات الصغيرة.. وألف قهوة تانية.</p></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="dot"></div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80&auto=format&fit=crop" alt="Hands forming a heart with roses" loading="lazy">
+        <div class="txt"><div class="when">2023</div><h3>قالت آه</h3><p>سألها وسط الورد.. وهي قالت آه قبل ما يكمل السؤال أصلاً.</p></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="dot"></div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&auto=format&fit=crop" alt="Wedding rings on flowers" loading="lazy">
+        <div class="txt"><div class="when">2024</div><h3>اتجوزنا</h3><p>أحلى يوم في العمر.. ومن يومها والبيت بقى بيتين في واحد.</p></div>
+      </div>
+    </div>
+    <div class="tl-item now">
+      <div class="dot"></div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop" alt="Two chairs on a lawn" loading="lazy">
+        <div class="txt"><div class="when">النهارده</div><h3>ولسه مكملين</h3><p>الحكاية لسه في أولها.. والجاي أحلى بكتير. عقبال العمر كله سوا.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Made with love · Mawke3ak</footer>
+</div>
+
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الأغنية">&#9834;</button>
+<div id="ytplayer" style="position:fixed;width:1px;height:1px;overflow:hidden;left:-9999px;bottom:0"></div>
+
+<script>
+const YT_ID='rtOvBOTyX00';
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+let ytPlayer=null,ytReady=false,ytPlaying=false;
+window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player('ytplayer',{videoId:YT_ID,playerVars:{loop:1,playlist:YT_ID},events:{onReady:()=>{ytReady=true}}});};
+document.getElementById('musicBtn').addEventListener('click',function(){
+  if(!ytReady)return;
+  if(ytPlaying){ytPlayer.pauseVideo();}else{ytPlayer.playVideo();}
+  ytPlaying=!ytPlaying;this.classList.toggle('playing',ytPlaying);
+});
+
+const body=document.body, intro=document.getElementById('intro'),
+      page=document.getElementById('page'), pin=document.getElementById('pin');
+let opened=false;
+function observeReveals(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+pin.addEventListener('click',()=>{
+  if(opened)return; opened=true;
+  pin.classList.add('hop');
+  setTimeout(()=>{intro.classList.add('open');body.classList.remove('locked');page.classList.add('show');observeReveals();},800);
+});
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';body.classList.remove('locked');page.classList.add('show');observeReveals();
+}
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+</script>
+</body>
+</html>
