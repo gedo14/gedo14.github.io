@@ -86,6 +86,11 @@ footer{text-align:center;color:#7fa394;font-size:.72rem;letter-spacing:.3em;text
 .g-item:nth-child(even){transform:rotate(1.4deg)}
 .g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
 .g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#4a463f;font-weight:500}
+.music-btn{position:fixed;bottom:18px;left:18px;z-index:80;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--gold),#a9822f);color:#1c1710;border:none;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.music-btn:hover{transform:scale(1.08)}
+.music-btn.playing{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.35)}50%{box-shadow:0 8px 26px rgba(201,162,75,.8)}}
+.card .ps{font-size:.95rem;color:#8a8378;font-style:italic;margin-top:10px}
 </style>
 </head>
 <body>
@@ -125,6 +130,7 @@ footer{text-align:center;color:#7fa394;font-size:.72rem;letter-spacing:.3em;text
   <section class="card">
     <h2 class="eng">From Omar</h2>
     <p>يا نور، من أول يوم شفتك وعرفت إن قلبي اختار.<br>مش قادر أتخيل يوم واحد من غير ضحكتك فيه.<br>مش بوعدك بحياة مثالية.. بوعدك بقلب معاكي في كل حاجة.</p>
+    <p class="ps">P.S. لو قلتي لا.. زرار اللا بيهرب أصلاً، فخدي وقتك 😅</p>
     <div class="sig">— Omar</div>
   </section>
 
@@ -143,7 +149,19 @@ footer{text-align:center;color:#7fa394;font-size:.72rem;letter-spacing:.3em;text
   <footer>Made with love · Mawke3ak</footer>
 </div>
 
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الأغنية">&#9834;</button>
+<div id="ytplayer" style="position:fixed;width:1px;height:1px;overflow:hidden;left:-9999px;bottom:0"></div>
+
 <script>
+const YT_ID='2Vv-BfVoq4g';
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+let ytPlayer=null,ytReady=false,ytPlaying=false;
+window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player('ytplayer',{videoId:YT_ID,playerVars:{loop:1,playlist:YT_ID},events:{onReady:()=>{ytReady=true}}});};
+document.getElementById('musicBtn').addEventListener('click',function(){
+  if(!ytReady)return;
+  if(ytPlaying){ytPlayer.pauseVideo();}else{ytPlayer.playVideo();}
+  ytPlaying=!ytPlaying;this.classList.toggle('playing',ytPlaying);
+});
 const intro=document.getElementById('intro'), page=document.getElementById('page'),
       box=document.getElementById('ringbox'), yesBtn=document.getElementById('yesBtn'),
       noBtn=document.getElementById('noBtn'), celebrate=document.getElementById('celebrate'),
