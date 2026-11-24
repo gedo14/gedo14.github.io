@@ -78,6 +78,15 @@
   .confetti{position:fixed;top:-16px;z-index:60;pointer-events:none;animation:cfall linear forwards}
   @keyframes cfall{to{transform:translateY(108vh) rotate(720deg)}}
 
+  .gallery{max-width:640px;margin:0 auto 44px;padding:0 16px;text-align:center}
+  .gallery h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--violet2);margin-bottom:2px}
+  .gallery .g-sub{font-family:'Playfair Display',serif;letter-spacing:.3em;font-size:.68rem;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .g-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 20px}
+  .g-scroll::-webkit-scrollbar{display:none}
+  .g-item{flex:0 0 70%;max-width:270px;scroll-snap-align:center;background:#fff;padding:9px 9px 12px;border-radius:8px;box-shadow:0 12px 26px rgba(60,45,80,.16);transform:rotate(-1.2deg);margin:0}
+  .g-item:nth-child(even){transform:rotate(1.4deg)}
+  .g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+  .g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#5c564c;font-weight:500}
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
   .flat .hero{min-height:auto;padding-top:60px}
@@ -126,6 +135,17 @@
 
   <section class="celebrate reveal">
     <button class="pop-btn" id="popBtn">يلا نحتفل 🎉</button>
+  </section>
+
+  <section class="gallery reveal">
+    <h2>لحظاتك الحلوة</h2>
+    <div class="g-sub">Sweet Moments</div>
+    <div class="g-scroll">
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80&auto=format&fit=crop" alt="Birthday cake with candles" loading="lazy"><figcaption>تورتة عيد ميلادك</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80&auto=format&fit=crop" alt="Colorful balloons" loading="lazy"><figcaption>بالونات وفرح</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&auto=format&fit=crop" alt="Confetti celebration at night" loading="lazy"><figcaption>ليلة الاحتفال</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80&auto=format&fit=crop" alt="Sparkling bokeh lights" loading="lazy"><figcaption>سنة مليانة نور</figcaption></figure>
+    </div>
   </section>
 
   <footer>Many happy returns</footer>
