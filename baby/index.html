@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>في ضيف صغير جاي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mint:#6fae9b; --mint2:#4e8a77; --sky:#7fa8d9; --gold:#c9a24b;
+  --cream:#f4f7f2; --white:#fffefa; --ink:#33392f; --muted:#87918a;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;
+  background:
+    radial-gradient(1100px 760px at 85% -8%, #e4efe8 0%, transparent 55%),
+    radial-gradient(900px 640px at 8% 108%, #dff0e9 0%, transparent 55%),
+    var(--cream);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+.eng{font-family:'Playfair Display',serif}
+
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px;text-align:center;background:radial-gradient(1100px 760px at 85% -8%,#e4efe8 0%,transparent 55%),radial-gradient(900px 640px at 8% 108%,#dff0e9 0%,transparent 55%),var(--cream);transition:opacity 1s ease,visibility 1s}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,9vw,3.4rem);color:var(--mint2)}
+.intro-sub{color:var(--muted);font-size:clamp(1.05rem,4.2vw,1.25rem);font-weight:500;line-height:1.9}
+.bottle{position:relative;width:90px;height:150px;cursor:pointer;animation:floaty 3.4s ease-in-out infinite;filter:drop-shadow(0 16px 28px rgba(78,138,119,.3))}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+.b-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:66px;height:96px;background:linear-gradient(160deg,#ffffff,#e8f3ee);border:3px solid var(--mint);border-radius:16px 16px 20px 20px;overflow:hidden}
+.b-body::after{content:'';position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(180deg,#f6e7c8,#eedcae)}
+.b-ring{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:74px;height:14px;background:var(--gold);border-radius:7px}
+.b-nip{position:absolute;top:4px;left:50%;transform:translateX(-50%);width:30px;height:34px;background:linear-gradient(180deg,#f6e7c8,#eedcae);border-radius:14px 14px 6px 6px;border:2px solid #dfc48e}
+.bottle.shake{animation:shake .7s ease 2}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}75%{transform:rotate(9deg)}}
+.intro-caption{color:var(--mint2);letter-spacing:.35em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase;opacity:.85}
+
+#page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+#page.show{opacity:1;visibility:visible}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 30px;gap:10px}
+.hero .eyebrow{color:var(--mint2);letter-spacing:.4em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase}
+.hero h1{font-size:clamp(1.9rem,8.4vw,2.9rem);font-weight:800;color:var(--mint2);line-height:1.7}
+.hero .baby-name{font-family:'Great Vibes',cursive;font-size:clamp(2.8rem,11vw,4.2rem);color:var(--mint);font-weight:400;line-height:1.15}
+.hero .ar{font-size:clamp(1.1rem,4.6vw,1.35rem);font-weight:500;color:#4f564d;line-height:2}
+.hero .en{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.05rem}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:10px auto}
+.reveal-btn{background:linear-gradient(150deg,var(--mint),var(--mint2));color:#fff;font-weight:800;font-size:clamp(1.02rem,4.4vw,1.15rem);border:none;border-radius:999px;padding:15px 38px;cursor:pointer;box-shadow:0 10px 26px rgba(78,138,119,.35);font-family:'Tajawal',sans-serif;margin-top:10px;transition:transform .2s}
+.reveal-btn:hover{transform:translateY(-2px)}
+#genderResult{display:none;margin-top:18px;animation:pop .7s cubic-bezier(.34,1.56,.64,1)}
+#genderResult.show{display:block}
+#genderResult .big{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,10vw,3.4rem);color:var(--sky)}
+#genderResult .ar2{font-size:clamp(1.15rem,4.8vw,1.4rem);font-weight:800;color:#3d66a3;line-height:1.9}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.count-sec{max-width:560px;margin:0 auto 44px;padding:0 18px;text-align:center}
+.count-sec h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--mint2);margin-bottom:14px}
+.count{display:flex;gap:10px;justify-content:center}
+.count .cell{flex:1;background:var(--white);border:1px solid rgba(201,162,75,.35);border-radius:14px;padding:14px 6px;box-shadow:0 10px 24px rgba(78,138,119,.08)}
+.count b{display:block;font-family:'Playfair Display',serif;font-size:clamp(1.6rem,7vw,2.1rem);color:var(--mint2)}
+.count span{font-size:.85rem;color:var(--muted);font-weight:500}
+
+.card{max-width:560px;margin:0 auto 40px;background:var(--white);border:1px solid rgba(111,174,155,.3);border-radius:20px;padding:34px 26px;text-align:center;box-shadow:0 16px 40px rgba(78,138,119,.1)}
+.card h2{font-family:'Playfair Display',serif;color:var(--mint2);font-size:clamp(1.35rem,5.4vw,1.7rem);margin-bottom:14px}
+.card p{font-size:clamp(1.02rem,4.3vw,1.18rem);line-height:2.1;color:#4a463f;font-weight:500}
+.card .ps{font-size:.95rem;color:var(--muted);font-style:italic;margin-top:12px}
+
+.gallery{max-width:640px;margin:0 auto 46px;padding:0 16px;text-align:center}
+.gallery h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--mint2);margin-bottom:2px}
+.gallery .g-sub{font-family:'Playfair Display',serif;letter-spacing:.3em;font-size:.68rem;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.g-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 20px}
+.g-scroll::-webkit-scrollbar{display:none}
+.g-item{flex:0 0 70%;max-width:270px;scroll-snap-align:center;background:#fff;padding:9px 9px 12px;border-radius:8px;box-shadow:0 12px 26px rgba(78,138,119,.14);transform:rotate(-1.2deg);margin:0}
+.g-item:nth-child(even){transform:rotate(1.4deg)}
+.g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+.g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#5c564c;font-weight:500}
+
+footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;padding:0 20px 34px}
+.confetti{position:fixed;top:-14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.flat .reveal{opacity:1;transform:none}
+.flat .hero{min-height:auto;padding-top:60px}
+.flat #intro{display:none}
+.flat #page{opacity:1;visibility:visible}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="intro-title">Oh Baby!</div>
+  <p class="intro-sub">في خبر صغير بحجم الدنيا..<br>افتح البطاقة</p>
+  <div class="bottle" id="bottle" role="button" aria-label="Open the card">
+    <div class="b-nip"></div>
+    <div class="b-ring"></div>
+    <div class="b-body"></div>
+  </div>
+  <div class="intro-caption">Tap the bottle to open</div>
+</div>
+
+<div id="page">
+  <section class="hero">
+    <div class="eyebrow">A Little One Is Coming</div>
+    <h1>في ضيف صغير جاي</h1>
+    <div class="baby-name">Baby Adam</div>
+    <div class="ar">عيلتنا بتكبر بقلب صغير جديد..<br>والدنيا كلها مستنياه</div>
+    <div class="en eng">Our family is growing by two tiny feet</div>
+    <div class="divider"></div>
+    <button class="reveal-btn" id="revealBtn">ولد ولا بنت؟ اضغط واعرف</button>
+    <div id="genderResult">
+      <div class="big">It's a Boy!</div>
+      <p class="ar2">ولد! مبروك يا بابا و ماما 💙</p>
+    </div>
+    <div style="height:14px"></div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="count-sec reveal">
+    <h2>فاضل على أول حضن</h2>
+    <div class="count">
+      <div class="cell"><b id="cdD">--</b><span>يوم</span></div>
+      <div class="cell"><b id="cdH">--</b><span>ساعة</span></div>
+      <div class="cell"><b id="cdM">--</b><span>دقيقة</span></div>
+      <div class="cell"><b id="cdS">--</b><span>ثانية</span></div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2 class="eng">From The Parents-To-Be</h2>
+    <p>مستنيينك يا آدم بكل حنية..<br>جهزنالك الهدوم واللعب وأحلى حضن.<br>تعالى بسلام يا أغلى ضيف.</p>
+    <p class="ps">تنبيه ودي: النوم الهادي رايح في إجازة مفتوحة 😴</p>
+  </section>
+
+  <section class="gallery reveal">
+    <h2>جهزنا العش</h2>
+    <div class="g-sub">Getting Ready</div>
+    <div class="g-scroll">
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80&auto=format&fit=crop" alt="Tiny baby feet" loading="lazy"><figcaption>رجلين صغيرة</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1604467794349-0b74285de7e7?w=800&q=80&auto=format&fit=crop" alt="Baby clothes on a rack" loading="lazy"><figcaption>هدوم نونو</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&q=80&auto=format&fit=crop" alt="Teddy bear and blanket" loading="lazy"><figcaption>صاحبه الجديد</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&q=80&auto=format&fit=crop" alt="Wooden toy train" loading="lazy"><figcaption>أول قطار</figcaption></figure>
+    </div>
+  </section>
+
+  <footer>Made with love · Mawke3ak</footer>
+</div>
+
+<script>
+const body=document.body, intro=document.getElementById('intro'),
+      page=document.getElementById('page'), bottle=document.getElementById('bottle'),
+      revealBtn=document.getElementById('revealBtn'), genderResult=document.getElementById('genderResult');
+const BLUE=['#7fa8d9','#a8c8ec','#4e8a77','#ffffff','#c9a24b'];
+function burst(n){
+  for(let i=0;i<n;i++){
+    const c=document.createElement('div'); c.className='confetti';
+    const s=6+Math.random()*8;
+    c.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s*1.4}px;background:${BLUE[i%BLUE.length]};animation-duration:${2.2+Math.random()*2}s;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    document.body.appendChild(c);
+    c.addEventListener('animationend',()=>c.remove());
+  }
+}
+let opened=false;
+function observeReveals(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+bottle.addEventListener('click',()=>{
+  if(opened)return; opened=true;
+  bottle.classList.add('shake');
+  setTimeout(()=>{intro.classList.add('open');body.classList.remove('locked');page.classList.add('show');observeReveals();},900);
+});
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';body.classList.remove('locked');page.classList.add('show');observeReveals();
+}
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+
+revealBtn.addEventListener('click',()=>{
+  burst(130);
+  revealBtn.style.display='none';
+  genderResult.classList.add('show');
+  setTimeout(()=>burst(70),700);
+});
+
+const target=new Date('2027-03-01T00:00:00+02:00').getTime();
+function tick(){
+  let d=target-Date.now(); if(d<0)d=0;
+  document.getElementById('cdD').textContent=Math.floor(d/864e5);
+  document.getElementById('cdH').textContent=Math.floor(d%864e5/36e5);
+  document.getElementById('cdM').textContent=Math.floor(d%36e5/6e4);
+  document.getElementById('cdS').textContent=Math.floor(d%6e4/1e3);
+}
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
