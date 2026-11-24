@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>عيد سعيد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#3b2a5a; --plum2:#241a3c; --gold:#d4af37; --gold-soft:#ecd68a;
+  --cream:#f6f0e4; --ink:#2b2b33; --muted:#9a90b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;
+  background:
+    radial-gradient(1100px 780px at 80% -10%, #4a3672 0%, transparent 55%),
+    radial-gradient(900px 660px at 8% 108%, #3d2c63 0%, transparent 55%),
+    var(--plum2);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+.eng{font-family:'Playfair Display',serif}
+.amiri{font-family:'Amiri',serif}
+
+.stars i{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.7;animation:tw 2.6s ease-in-out infinite;z-index:0;pointer-events:none}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.85}}
+
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px;text-align:center;transition:opacity 1s ease,visibility 1s}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,9.4vw,3.6rem);color:var(--gold-soft);text-shadow:0 2px 18px rgba(212,175,55,.35)}
+.intro-sub{color:#cfc4e8;font-size:clamp(1.05rem,4.2vw,1.25rem);font-weight:500;line-height:1.9}
+.crescent{position:relative;width:120px;height:120px;cursor:pointer;animation:floaty 4s ease-in-out infinite;filter:drop-shadow(0 0 26px rgba(212,175,55,.45))}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.crescent::before{content:'';position:absolute;inset:0;background:var(--gold);border-radius:50%}
+.crescent::after{content:'';position:absolute;top:-4%;left:22%;width:100%;height:100%;background:var(--plum2);border-radius:50%;transition:transform .8s ease}
+.crescent.open::after{transform:translateX(26%) scale(.7);opacity:0}
+.intro-caption{color:var(--gold-soft);letter-spacing:.35em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase;opacity:.85}
+
+#page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+#page.show{opacity:1;visibility:visible}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 30px;gap:12px}
+.hero .eyebrow{color:var(--gold-soft);letter-spacing:.4em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase}
+.hero h1{font-family:'Amiri',serif;font-size:clamp(2.6rem,11vw,4rem);color:#f5edd8;line-height:1.5;text-shadow:0 3px 24px rgba(0,0,0,.4)}
+.hero .ar{font-size:clamp(1.12rem,4.7vw,1.4rem);font-weight:500;color:#ded4f0;line-height:2.1}
+.hero .en{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.05rem}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto}
+.scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.card{max-width:560px;margin:0 auto 40px;background:var(--cream);border:1px solid rgba(212,175,55,.4);border-radius:20px;padding:34px 26px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.card h2{font-family:'Amiri',serif;color:var(--plum);font-size:clamp(1.5rem,6vw,1.9rem);margin-bottom:12px}
+.card p{font-family:'Amiri',serif;font-size:clamp(1.1rem,4.6vw,1.3rem);line-height:2.2;color:#463f33}
+.card .fun{font-family:'Tajawal',sans-serif;font-size:.95rem;color:var(--muted);margin-top:12px;font-style:italic}
+
+.wishes{max-width:560px;margin:0 auto 44px;padding:0 18px;display:flex;flex-direction:column;gap:14px}
+.wish{background:rgba(246,240,228,.06);border:1px solid rgba(212,175,55,.3);border-radius:16px;padding:18px 20px;text-align:center}
+.wish p{font-size:clamp(1.02rem,4.3vw,1.18rem);line-height:2;color:#e9e2f5;font-weight:500}
+.wish .who{font-family:'Great Vibes',cursive;color:var(--gold-soft);font-size:1.5rem;margin-top:4px}
+
+.gallery{max-width:640px;margin:0 auto 46px;padding:0 16px;text-align:center}
+.gallery h2{font-family:'Amiri',serif;font-size:2.2rem;color:var(--gold-soft);margin-bottom:2px}
+.gallery .g-sub{font-family:'Playfair Display',serif;letter-spacing:.3em;font-size:.68rem;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.g-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 20px}
+.g-scroll::-webkit-scrollbar{display:none}
+.g-item{flex:0 0 70%;max-width:270px;scroll-snap-align:center;background:var(--cream);padding:9px 9px 12px;border-radius:8px;box-shadow:0 14px 30px rgba(0,0,0,.35);transform:rotate(-1.2deg);margin:0}
+.g-item:nth-child(even){transform:rotate(1.4deg)}
+.g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+.g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#5c564c;font-weight:500}
+
+footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;padding:0 20px 34px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.flat .reveal{opacity:1;transform:none}
+.flat .hero{min-height:auto;padding-top:60px}
+.flat #intro{display:none}
+.flat #page{opacity:1;visibility:visible}
+</style>
+</head>
+<body class="locked">
+
+<div class="stars">
+  <i style="top:12%;left:18%"></i><i style="top:8%;left:64%;animation-delay:.6s"></i>
+  <i style="top:20%;left:82%;animation-delay:1.1s"></i><i style="top:30%;left:8%;animation-delay:1.5s"></i>
+  <i style="top:16%;left:42%;animation-delay:.9s"></i><i style="top:26%;left:56%;animation-delay:1.8s"></i>
+</div>
+
+<div id="intro">
+  <div class="intro-title">Eid Saeed</div>
+  <p class="intro-sub">الهلال ظهر..<br>افتح التهنئة</p>
+  <div class="crescent" id="crescent" role="button" aria-label="Open the greeting"></div>
+  <div class="intro-caption">Tap the crescent to open</div>
+</div>
+
+<div id="page">
+  <section class="hero">
+    <div class="eyebrow">Blessed Eid</div>
+    <h1 class="amiri">عيد سعيد</h1>
+    <div class="ar">كل سنة وانتوا طيبين..<br>تقبّل الله منا ومنكم صالح الأعمال</div>
+    <div class="en eng">Wishing you a joyful and blessed Eid</div>
+    <div class="divider"></div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="card reveal">
+    <h2 class="amiri">تهنئة من القلب</h2>
+    <p class="amiri">يا أهل الخير، العيد من غيركم مالوش طعم.<br>ربنا يجمعنا على خير وسرور،<br>ويجعل أيامكم كلها أعياد.</p>
+    <p class="fun">ملحوظة: الكحك خلص.. اللي جاي بدري ياخد 😄</p>
+  </section>
+
+  <section class="wishes reveal">
+    <div class="wish">
+      <p>عيد مبارك عليكم وعلى كل حبايبكم.. نورتوا الدنيا.</p>
+      <div class="who">— عيلتكم</div>
+    </div>
+    <div class="wish">
+      <p>كل سنة وانتوا سالمين وفرحانين.. وعقبال أعياد كتير نجتمع فيها.</p>
+      <div class="who">— أحبابكم</div>
+    </div>
+  </section>
+
+  <section class="gallery reveal">
+    <h2 class="amiri">أجواء العيد</h2>
+    <div class="g-sub">Eid Vibes</div>
+    <div class="g-scroll">
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=800&q=80&auto=format&fit=crop" alt="Mosque at sunset" loading="lazy"><figcaption>ليلة العيد</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=800&q=80&auto=format&fit=crop" alt="Ornate blue Quran cover" loading="lazy"><figcaption>بركة الشهر</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=800&q=80&auto=format&fit=crop" alt="Quran on a table" loading="lazy"><figcaption>روح رمضان</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?w=800&q=80&auto=format&fit=crop" alt="Grand mosque courtyard" loading="lazy"><figcaption>صلاة العيد</figcaption></figure>
+    </div>
+  </section>
+
+  <footer>Made with love · Mawke3ak</footer>
+</div>
+
+<script>
+const body=document.body, intro=document.getElementById('intro'),
+      page=document.getElementById('page'), crescent=document.getElementById('crescent');
+let opened=false;
+function observeReveals(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+crescent.addEventListener('click',()=>{
+  if(opened)return; opened=true;
+  crescent.classList.add('open');
+  setTimeout(()=>{intro.classList.add('open');body.classList.remove('locked');page.classList.add('show');observeReveals();},700);
+});
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';body.classList.remove('locked');page.classList.add('show');observeReveals();
+}
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+</script>
+</body>
+</html>
