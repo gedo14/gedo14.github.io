@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover'>
+<title>Happy Birthday Mariam 🎂</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap' rel='stylesheet'>
+<style>
+  :root{
+    --cream:#fdf6ee; --violet:#8d7ab8; --violet2:#6a579a;
+    --ink:#3d3630; --ink-soft:#7a6f63; --white:#fffdf9; --pink:#e290ac;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;min-height:100vh}
+  body.locked{overflow:hidden;height:100vh}
+
+  /* intro */
+  #intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;gap:26px;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,#f5ecfb 0%,#ecdff7 50%,#e0d0f2 100%);
+    transition:opacity 1.1s ease, visibility 1.1s}
+  #intro.open{opacity:0;visibility:hidden;pointer-events:none}
+  .intro-names{position:absolute;top:8vh;left:0;right:0;text-align:center;font-family:'Great Vibes',cursive;font-size:2.6rem;color:var(--violet2)}
+  .giftbox{position:relative;width:min(240px,64vw);aspect-ratio:1;cursor:pointer;animation:floaty 3.6s ease-in-out infinite;filter:drop-shadow(0 24px 44px rgba(90,70,130,.3))}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .gb-body{position:absolute;left:6%;right:6%;bottom:0;height:62%;background:linear-gradient(160deg,#9c88c4,#7c66ab);border-radius:12px;box-shadow:inset 0 -8px 16px rgba(60,40,100,.35)}
+  .gb-lid{position:absolute;left:2%;right:2%;bottom:58%;height:20%;background:linear-gradient(160deg,#b09bd8,#8d76bd);border-radius:10px;transform-origin:left bottom;transition:transform .8s cubic-bezier(.6,0,.3,1);z-index:3;box-shadow:0 6px 14px rgba(60,40,100,.3)}
+  .gb-ribbon-v{position:absolute;left:50%;top:0;bottom:0;width:14%;transform:translateX(-50%);background:linear-gradient(90deg,#f2b8cb,#e290ac);z-index:2}
+  .gb-bow{position:absolute;left:50%;top:-6%;transform:translateX(-50%);font-size:2.6rem;z-index:4;filter:drop-shadow(0 4px 6px rgba(60,40,100,.3))}
+  .giftbox.open .gb-lid{transform:rotate(-38deg) translate(-34%,-30%)}
+  .giftbox.open .gb-bow{animation:bowfly 1s ease forwards}
+  @keyframes bowfly{to{transform:translateX(-50%) translateY(-90px) rotate(-30deg);opacity:0}}
+  .intro-caption{position:absolute;bottom:9vh;left:0;right:0;text-align:center;color:var(--ink-soft);font-size:.95rem;letter-spacing:2.5px;text-transform:uppercase;animation:pulseTxt 2.2s ease-in-out infinite}
+  @keyframes pulseTxt{0%,100%{opacity:.55}50%{opacity:1}}
+
+  /* page */
+  #page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+  #page.show{opacity:1;visibility:visible}
+  .hero{min-height:96vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 40px}
+  .kicker{font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  .names{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(3rem,14vw,4.4rem);line-height:1.25;color:var(--ink)}
+  .names .hl{color:var(--violet2)}
+  .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--ink-soft);margin-top:10px}
+
+  /* cake */
+  .cake-sec{text-align:center;padding:20px 20px 10px}
+  .cake{position:relative;width:220px;margin:30px auto 0}
+  .tier{margin:0 auto;border-radius:10px 10px 6px 6px;position:relative}
+  .t1{width:200px;height:64px;background:linear-gradient(180deg,#f6c3d2,#e89bb4)}
+  .t2{width:150px;height:54px;background:linear-gradient(180deg,#cbb7e8,#a98fd4)}
+  .t3{width:100px;height:44px;background:linear-gradient(180deg,#f9d9a8,#efc27f)}
+  .icing{position:absolute;top:0;left:0;right:0;height:16px;border-radius:10px 10px 0 0;background:#fffdfb;opacity:.95}
+  .candle{position:absolute;bottom:100%;width:8px;height:34px;background:repeating-linear-gradient(45deg,#fff 0 4px,#e290ac 4px 8px);border-radius:3px;left:calc(50% - 4px)}
+  .flame{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:14px;height:20px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#ffe9a8,#ffb84d 60%,#ff8a3d);animation:flick .35s infinite alternate;filter:blur(.4px)}
+  @keyframes flick{from{transform:translateX(-50%) scale(1)}to{transform:translateX(-50%) scale(1.15,.9) translateY(-2px)}}
+  .cake-note{font-family:'Aref Ruqaa',serif;direction:rtl;font-size:1.4rem;color:var(--violet2);margin-top:26px}
+
+  .wish{padding:30px 24px 10px;text-align:center}
+  .wish-card{max-width:560px;margin:0 auto;background:var(--white);border:1px solid rgba(106,87,154,.22);border-radius:18px;padding:34px 26px;box-shadow:0 14px 34px rgba(90,70,130,.10)}
+  .wish-card p{font-family:'Amiri',serif;direction:rtl;font-size:1.4rem;line-height:2.1;color:var(--ink);margin:0 0 12px}
+  .wish-card .en{font-family:'Cormorant Garamond',serif;font-style:italic;direction:ltr;font-size:1.25rem;color:var(--ink-soft)}
+
+  .celebrate{text-align:center;padding:44px 20px 70px}
+  .pop-btn{font-family:'Aref Ruqaa',serif;font-size:1.6rem;color:#fff;background:linear-gradient(135deg,#9c88c4,#6a579a);border:none;border-radius:60px;padding:16px 50px;cursor:pointer;box-shadow:0 14px 30px rgba(106,87,154,.35);transition:transform .25s ease}
+  .pop-btn:active{transform:scale(.94)}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.78rem;padding-bottom:36px;letter-spacing:2px;text-transform:uppercase}
+
+  #balloons{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+  .b-rise{position:absolute;bottom:-90px;will-change:transform;opacity:.9;animation:rise linear forwards}
+  @keyframes rise{to{transform:translateY(-115vh)}}
+  .confetti{position:fixed;top:-16px;z-index:60;pointer-events:none;animation:cfall linear forwards}
+  @keyframes cfall{to{transform:translateY(108vh) rotate(720deg)}}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+  .flat .hero{min-height:auto;padding-top:60px}
+  .flat .reveal{opacity:1;transform:none}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="intro-names">For Mariam</div>
+  <div class="giftbox" id="giftbox" role="button" aria-label="Open the surprise">
+    <div class="gb-bow">🎀</div>
+    <div class="gb-lid"></div>
+    <div class="gb-body"></div>
+    <div class="gb-ribbon-v"></div>
+  </div>
+  <div class="intro-caption">Tap the gift to open</div>
+</div>
+
+<div id="balloons"></div>
+
+<main id="page">
+  <section class="hero">
+    <div class="kicker">It's your day</div>
+    <h1 class="names">Happy Birthday <span class="hl">Mariam</span></h1>
+    <div class="sub">Another year of being wonderful</div>
+  </section>
+
+  <section class="cake-sec reveal">
+    <div class="cake">
+      <div class="tier t3"><div class="icing"></div><div class="candle"></div><div class="flame"></div></div>
+      <div class="tier t2"><div class="icing"></div></div>
+      <div class="tier t1"><div class="icing"></div></div>
+    </div>
+    <div class="cake-note">اطفي الشمعة واتمني أمنية 🕯️✨</div>
+  </section>
+
+  <section class="wish reveal">
+    <div class="wish-card">
+      <p>كل سنة وانتِ طيبة يا مريم 🎂</p>
+      <p>ربنا يحققلك كل اللي بتتمناه، وتفضلي ضحكتك منورة حياتنا.</p>
+      <p>سنة جديدة أحلى، وأيامك كلها فرح ونجاح.</p>
+      <p class="en">Wishing you a year as beautiful as your smile. Happy birthday!</p>
+    </div>
+  </section>
+
+  <section class="celebrate reveal">
+    <button class="pop-btn" id="popBtn">يلا نحتفل 🎉</button>
+  </section>
+
+  <footer>Many happy returns</footer>
+</main>
+
+<script>
+const body=document.body, intro=document.getElementById('intro'), box=document.getElementById('giftbox'), page=document.getElementById('page');
+let balloonsStarted=false;
+
+function openInvite(){
+  box.classList.add('open');
+  setTimeout(()=>{
+    intro.classList.add('open');
+    body.classList.remove('locked');
+    page.classList.add('show');
+    startBalloons(6);
+    observeReveals();
+  },700);
+}
+box.addEventListener('click', openInvite);
+
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';
+  body.classList.remove('locked');
+  page.classList.add('show');
+  startBalloons(3);
+  observeReveals();
+}
+
+document.getElementById('popBtn').addEventListener('click',()=>{ confettiBurst(90); startBalloons(14); });
+
+function startBalloons(n){
+  const cv=document.getElementById('balloons');
+  const em=['🎈','🎈','🎁','🎂','✨'];
+  for(let i=0;i<n;i++){
+    setTimeout(()=>{
+      const b=document.createElement('span');
+      b.className='b-rise';
+      b.textContent=em[Math.floor(Math.random()*em.length)];
+      b.style.left=Math.random()*92+'vw';
+      b.style.fontSize=(30+Math.random()*26)+'px';
+      b.style.animationDuration=(5+Math.random()*4)+'s';
+      cv.appendChild(b);
+      setTimeout(()=>b.remove(),9500);
+    }, i*450);
+  }
+  if(!balloonsStarted){
+    balloonsStarted=true;
+    setInterval(()=>{ if(!document.hidden) startFew(); }, 6000);
+  }
+  function startFew(){ const c=document.getElementById('balloons'); const b=document.createElement('span'); b.className='b-rise'; b.textContent='🎈'; b.style.left=Math.random()*92+'vw'; b.style.fontSize=(30+Math.random()*22)+'px'; b.style.animationDuration=(6+Math.random()*4)+'s'; c.appendChild(b); setTimeout(()=>b.remove(),10000); }
+}
+
+function confettiBurst(n){
+  const colors=['#8d7ab8','#e290ac','#efc27f','#9ed0b7','#f2b8cb'];
+  for(let i=0;i<n;i++){
+    const c=document.createElement('span');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.width=(6+Math.random()*8)+'px';
+    c.style.height=(10+Math.random()*8)+'px';
+    c.style.background=colors[i%colors.length];
+    c.style.borderRadius=Math.random()>.5?'50%':'2px';
+    c.style.animationDuration=(2.6+Math.random()*2.4)+'s';
+    c.style.animationDelay=(Math.random()*.6)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),6000);
+  }
+}
+
+function observeReveals(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
