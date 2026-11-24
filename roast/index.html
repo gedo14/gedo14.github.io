@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>مبروك يا عجوز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#e8763a; --orange2:#c25a24; --char:#241f1c; --char2:#171310;
+  --cream:#f6f1ea; --gold:#d4af37; --muted:#a89a8d;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--cream);min-height:100vh;
+  background:
+    radial-gradient(1000px 720px at 82% -8%, #38302a 0%, transparent 55%),
+    radial-gradient(860px 620px at 8% 108%, #322a24 0%, transparent 55%),
+    var(--char2);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+.eng{font-family:'Playfair Display',serif}
+
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px;text-align:center;transition:opacity 1s ease,visibility 1s}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(2.4rem,9vw,3.4rem);color:var(--orange)}
+.intro-sub{color:var(--muted);font-size:clamp(1.05rem,4.2vw,1.25rem);font-weight:500;line-height:1.9}
+.flame{position:relative;width:80px;height:120px;cursor:pointer;animation:floaty 2.6s ease-in-out infinite;filter:drop-shadow(0 0 26px rgba(232,118,58,.5))}
+@keyframes floaty{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.05)}}
+.flame .f{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotate(-45deg);width:64px;height:64px;background:linear-gradient(135deg,#ffb347,var(--orange2));border-radius:0 50% 50% 50%;transition:transform .6s ease}
+.flame .f2{width:38px;height:38px;bottom:6px;background:linear-gradient(135deg,#ffe29a,#ffb347);border-radius:0 50% 50% 50%;position:absolute;left:50%;transform:translateX(-50%) rotate(-45deg)}
+.flame.out .f,.flame.out .f2{transform:translateX(-50%) rotate(-45deg) scale(0)}
+.intro-caption{color:var(--orange);letter-spacing:.35em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase;opacity:.9}
+
+#page{opacity:0;visibility:hidden;transition:opacity 1s ease .3s}
+#page.show{opacity:1;visibility:visible}
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 30px;gap:10px}
+.hero .eyebrow{color:var(--orange);letter-spacing:.4em;font-size:.72rem;font-family:'Playfair Display',serif;text-transform:uppercase}
+.hero h1{font-size:clamp(2rem,8.6vw,3rem);font-weight:800;color:#fbf4ec;line-height:1.6}
+.hero .name{font-family:'Great Vibes',cursive;font-size:clamp(3rem,12vw,4.6rem);color:var(--orange);font-weight:400;line-height:1.15}
+.hero .ar{font-size:clamp(1.1rem,4.6vw,1.35rem);font-weight:500;color:#d8cbbd;line-height:2}
+.hero .en{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.05rem}
+.divider{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:10px auto}
+.scroll-hint{color:var(--muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.stats{max-width:560px;margin:0 auto 40px;display:flex;gap:12px;padding:0 18px;flex-wrap:wrap;justify-content:center}
+.stat{flex:1 1 140px;background:rgba(246,241,234,.06);border:1px solid rgba(232,118,58,.3);border-radius:16px;padding:18px 12px;text-align:center}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--orange)}
+.stat span{font-size:.92rem;color:var(--muted);font-weight:500}
+
+.roasts{max-width:560px;margin:0 auto 44px;padding:0 18px;display:flex;flex-direction:column;gap:14px}
+.roast{background:var(--cream);color:#3a322c;border-radius:16px;padding:20px 22px;box-shadow:0 14px 32px rgba(0,0,0,.35);border-right:5px solid var(--orange)}
+.roast p{font-size:clamp(1.02rem,4.3vw,1.18rem);line-height:2;font-weight:600}
+
+.cheer{max-width:560px;margin:0 auto 44px;padding:0 18px;text-align:center}
+.cheer-btn{background:linear-gradient(150deg,var(--orange),var(--orange2));color:#fff;font-weight:800;font-size:clamp(1.05rem,4.6vw,1.2rem);border:none;border-radius:999px;padding:16px 42px;cursor:pointer;box-shadow:0 10px 28px rgba(232,118,58,.4);font-family:'Tajawal',sans-serif;transition:transform .2s}
+.cheer-btn:hover{transform:translateY(-2px)}
+#loveNote{display:none;margin-top:18px;padding:18px 22px;background:var(--cream);color:#3a322c;border-radius:14px;font-weight:700;font-size:clamp(1.05rem,4.4vw,1.2rem);line-height:2}
+#loveNote.show{display:block;animation:pop .7s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+
+.gallery{max-width:640px;margin:0 auto 46px;padding:0 16px;text-align:center}
+.gallery h2{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--orange);margin-bottom:2px}
+.gallery .g-sub{font-family:'Playfair Display',serif;letter-spacing:.3em;font-size:.68rem;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.g-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 20px}
+.g-scroll::-webkit-scrollbar{display:none}
+.g-item{flex:0 0 70%;max-width:270px;scroll-snap-align:center;background:var(--cream);padding:9px 9px 12px;border-radius:8px;box-shadow:0 14px 30px rgba(0,0,0,.35);transform:rotate(-1.2deg);margin:0}
+.g-item:nth-child(even){transform:rotate(1.4deg)}
+.g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block}
+.g-item figcaption{text-align:center;padding-top:9px;font-size:.95rem;color:#5c564c;font-weight:500}
+
+.music-btn{position:fixed;bottom:18px;left:18px;z-index:80;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--orange),var(--orange2));color:#fff;border:none;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.music-btn:hover{transform:scale(1.08)}
+.music-btn.playing{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.4)}50%{box-shadow:0 8px 26px rgba(232,118,58,.8)}}
+
+footer{text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-family:'Playfair Display',serif;padding:0 20px 34px}
+.confetti{position:fixed;top:-14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.flat .reveal{opacity:1;transform:none}
+.flat .hero{min-height:auto;padding-top:60px}
+.flat #intro{display:none}
+.flat #page{opacity:1;visibility:visible}
+</style>
+</head>
+<body class="locked">
+
+<div id="intro">
+  <div class="intro-title">For Seif</div>
+  <p class="intro-sub">في شمعة لازم تتطفي..<br>افتح لو معاك نفس</p>
+  <div class="flame" id="flame" role="button" aria-label="Blow the candle">
+    <div class="f"></div>
+    <div class="f2"></div>
+  </div>
+  <div class="intro-caption">Tap to blow the candle</div>
+</div>
+
+<div id="page">
+  <section class="hero">
+    <div class="eyebrow">Happy Birthday, Legend</div>
+    <h1>مبروك يا عجوز 🎂</h1>
+    <div class="name">Seif</div>
+    <div class="ar">سنة جديدة من العظمة..<br>والشيب بدأ يحجز مكانه</div>
+    <div class="en eng">Another year older, none the wiser</div>
+    <div class="divider"></div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="stats reveal">
+    <div class="stat"><b>360</b><span>شهر خبرة في الأكل</span></div>
+    <div class="stat"><b>1</b><span>شيبة (رسمية وموثقة)</span></div>
+    <div class="stat"><b>0</b><span>حكمة زيادة عن السنة اللي فاتت</span></div>
+  </section>
+
+  <section class="roasts reveal">
+    <div class="roast"><p>عيد ميلادك بقى زي التنين.. بنسمع عنه كل سنة بس محدش شافه بيتعمل صح.</p></div>
+    <div class="roast"><p>انت مش كبرت.. انت بقيت "كلاسيك". زي الأغاني القديمة: بنحبك بس مش بنشغلك كتير.</p></div>
+    <div class="roast"><p>الشموع على التورتة السنة دي محتاجة تصريح من الحماية المدنية.</p></div>
+    <div class="roast"><p>نصيحة: لما تقول "أيام زمان"، افتكر إن زمان ده.. احنا كنا فيه معاك. يعني انت رسمي قديم.</p></div>
+  </section>
+
+  <section class="cheer reveal">
+    <button class="cheer-btn" id="cheerBtn">زعلت؟ دوس هنا 😂</button>
+    <div id="loveNote">مزعلش يا بطل.. كل الهزار ده لأننا بنحبك ❤️<br>كل سنة وانت أخ وأخوها.. وعقبال ١٠٠ سنة ضحك.</div>
+  </section>
+
+  <section class="gallery reveal">
+    <h2>أدلة التهمة</h2>
+    <div class="g-sub">Evidence</div>
+    <div class="g-scroll">
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80&auto=format&fit=crop" alt="Birthday cake with candles" loading="lazy"><figcaption>التورتة اللي هتاكلها لوحدك</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80&auto=format&fit=crop" alt="Colorful balloons" loading="lazy"><figcaption>بالونات على قد العمر</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&auto=format&fit=crop" alt="Confetti celebration" loading="lazy"><figcaption>احتفال الكبار بقى</figcaption></figure>
+      <figure class="g-item"><img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80&auto=format&fit=crop" alt="Sparkling lights" loading="lazy"><figcaption>لمعة الشيبة الأولى</figcaption></figure>
+    </div>
+  </section>
+
+  <footer>Roasted with love · Mawke3ak</footer>
+</div>
+
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الأغنية">&#9834;</button>
+<div id="ytplayer" style="position:fixed;width:1px;height:1px;overflow:hidden;left:-9999px;bottom:0"></div>
+
+<script>
+const YT_ID='3GwjfUFyY6M';
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+let ytPlayer=null,ytReady=false,ytPlaying=false;
+window.onYouTubeIframeAPIReady=function(){ytPlayer=new YT.Player('ytplayer',{videoId:YT_ID,playerVars:{loop:1,playlist:YT_ID},events:{onReady:()=>{ytReady=true}}});};
+document.getElementById('musicBtn').addEventListener('click',function(){
+  if(!ytReady)return;
+  if(ytPlaying){ytPlayer.pauseVideo();}else{ytPlayer.playVideo();}
+  ytPlaying=!ytPlaying;this.classList.toggle('playing',ytPlaying);
+});
+
+const body=document.body, intro=document.getElementById('intro'),
+      page=document.getElementById('page'), flame=document.getElementById('flame'),
+      cheerBtn=document.getElementById('cheerBtn'), loveNote=document.getElementById('loveNote');
+const COLORS=['#e8763a','#d4af37','#f6f1ea','#ffb347','#c25a24'];
+function burst(n){
+  for(let i=0;i<n;i++){
+    const c=document.createElement('div'); c.className='confetti';
+    const s=6+Math.random()*8;
+    c.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s*1.4}px;background:${COLORS[i%COLORS.length]};animation-duration:${2.2+Math.random()*2}s;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    document.body.appendChild(c);
+    c.addEventListener('animationend',()=>c.remove());
+  }
+}
+let opened=false;
+function observeReveals(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+flame.addEventListener('click',()=>{
+  if(opened)return; opened=true;
+  flame.classList.add('out');
+  setTimeout(()=>{intro.classList.add('open');body.classList.remove('locked');page.classList.add('show');observeReveals();},700);
+});
+if(location.hash==='#open'||location.hash.includes('flat')){
+  intro.style.display='none';body.classList.remove('locked');page.classList.add('show');observeReveals();
+}
+if(location.hash.includes('flat')){document.documentElement.classList.add('flat');}
+cheerBtn.addEventListener('click',()=>{
+  burst(120);
+  cheerBtn.style.display='none';
+  loveNote.classList.add('show');
+  setTimeout(()=>burst(70),700);
+});
+</script>
+</body>
+</html>
